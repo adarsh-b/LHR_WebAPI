@@ -1,0 +1,57 @@
+2019-10-10 10:02:42,899 [23] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error: Data is Null. This method or property cannot be called on Null values.   at System.Data.SqlClient.SqlBuffer.get_String()
+   at System.Data.SqlClient.SqlDataReader.GetString(Int32 i)
+   at CaseTranswerAPI.DataAccessLayer.CaseTransferDAL.GetNonAtlasLwfirms() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.DataAccessLayer\CaseTransferDAL.cs:line 278
+   at CaseTranswerAPI.Service.CaseTransferService.GetNonAtlasLwfirms() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 43
+   at CaseTranswerAPI.Web.Controllers.TransferController.GetNonAtlasLwfirms() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 193
+2019-10-10 10:04:06,484 [19] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error: Could not find stored procedure 'usp_GetNonAtlasCaseTranseferQueue'.   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at CaseTranswerAPI.DataAccessLayer.CaseTransferDAL.GetLawFirmCaseTransferBatch(String lawfirmid) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.DataAccessLayer\CaseTransferDAL.cs:line 338
+   at CaseTranswerAPI.Service.CaseTransferService.GetLawFirmCaseTransferBatch(String lawfirmid) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 57
+   at CaseTranswerAPI.Web.Controllers.TransferController.GetLawFirmCaseTransferBatch(String lawfirmid) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 255
+2020-06-22 19:33:39,947 [6] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error: There are not enough fields in the Structured type.  Structured types must have at least one field.   at System.Data.SqlClient.TdsParser.TdsExecuteRPC(SqlCommand cmd, _SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at CaseTranswerAPI.DataAccessLayer.CaseTransferDAL.UpdateAtlasCaseToGYB(IEnumerable`1 data) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.DataAccessLayer\CaseTransferDAL.cs:line 230
+   at CaseTranswerAPI.Service.CaseTransferService.UpdateAtlasCaseToGYB(IEnumerable`1 data) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 37
+   at CaseTranswerAPI.Web.Controllers.TransferController.UpdateAtlasCaseToGYB(IEnumerable`1 transferredCases) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 51
+2020-07-03 16:41:30,822 [40] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error while executing NotifyGYBCaseTransfer : Object reference not set to an instance of an object.   at CaseTranswerAPI.DataAccessLayer.CaseTransferDAL.NotifyGYBCaseTransfer() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.DataAccessLayer\CaseTransferDAL.cs:line 871
+   at CaseTranswerAPI.Service.CaseTransferService.NotifyGYBCaseTransfer() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 109
+   at CaseTranswerAPI.Web.Controllers.TransferController.NotifyGYBCaseTransfer() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 798
+2020-07-03 17:00:35,722 [6] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error while executing NotifyAttorneyCaseWithdrawl : Object reference not set to an instance of an object.   at CaseTranswerAPI.DataAccessLayer.CaseTransferDAL.NotifyAttorneyCaseWithdrawl()
+   at CaseTranswerAPI.Service.CaseTransferService.NotifyAttorneyCaseWithdrawl() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 102
+   at CaseTranswerAPI.Web.Controllers.TransferController.NotifyAttorneyCaseWithdrawl() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 765
+2020-07-03 17:18:56,294 [7] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error while executing NotifyAttorneyCaseWithdrawl : Object reference not set to an instance of an object.   at CaseTranswerAPI.DataAccessLayer.CaseTransferDAL.NotifyAttorneyCaseWithdrawl() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.DataAccessLayer\CaseTransferDAL.cs:line 763
+   at CaseTranswerAPI.Service.CaseTransferService.NotifyAttorneyCaseWithdrawl() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 102
+   at CaseTranswerAPI.Web.Controllers.TransferController.NotifyAttorneyCaseWithdrawl() in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 765
+2020-07-03 20:46:31,741 [47] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error: The type initializer for 'CaseTranswerAPI.DataAccessLayer.ApplicationSettings' threw an exception.   at CaseTranswerAPI.DataAccessLayer.ApplicationSettings.GetParameterValue(String ParameterName, String basePathID)
+   at CaseTranswerAPI.Service.CaseTransferService.GetParameterValue(String ParameterName, String basePathID) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 137
+   at CaseTranswerAPI.Web.Controllers.TransferController.DownloadFile(String fileName, String path, String basePathID) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 624
+2020-07-03 20:48:42,773 [47] ERROR CaseTranswerAPI.Web.Controllers.TransferController [(null)] - Error: The type initializer for 'CaseTranswerAPI.DataAccessLayer.ApplicationSettings' threw an exception.   at CaseTranswerAPI.DataAccessLayer.ApplicationSettings.GetParameterValue(String ParameterName, String basePathID)
+   at CaseTranswerAPI.Service.CaseTransferService.GetParameterValue(String ParameterName, String basePathID) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Service\CaseTransferService.cs:line 137
+   at CaseTranswerAPI.Web.Controllers.TransferController.DownloadFile(String fileName, String path, String basePathID) in C:\Projects\GoGreen_Staging_new_801\GoGreen4.5\Projects\CaseTranswerAPI\CaseTranswerAPI.Web\Controllers\TransferController.cs:line 624
+2020-07-03 21:29:41,241 [8] ERROR CaseTranswerAPI.Web.Filters.CustomExceptionFilter [(null)] - ErrorA null value was returned where an instance of HttpResponseMessage was expected.   at System.Web.Http.Controllers.ResponseMessageResultConverter.Convert(HttpControllerContext controllerContext, Object actionResult)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
