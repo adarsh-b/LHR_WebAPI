@@ -19,10 +19,24 @@ namespace WebAPI.Service
         }
         #endregion
 
-        #region GetBillFiles
-        public IEnumerable<FileData> GetBillFiles(string BillNo, string LawFirmID)
+        #region UpdateAtlasCaseToGYB
+        public void UpdateAtlasCaseToGYB(IEnumerable<TransferredCaseData> data)
         {
-            return CaseTransferDAL.GetBillFiles(BillNo, LawFirmID);
+            CaseTransferDAL.UpdateAtlasCaseToGYB(data);
+        }
+        #endregion
+
+        #region GetBillFiles
+        public IEnumerable<FileData> GetBillFiles(string BillNo)
+        {
+            return CaseTransferDAL.GetBillFiles(BillNo);
+        }
+        #endregion
+
+        #region GetAllBillDocumentsByCaseID
+        public IEnumerable<FileData> GetAllBillDocumentsByCaseID(string BillNumber)
+        {
+            return CaseTransferDAL.GetAllBillDocumentsByCaseID(BillNumber);
         }
         #endregion
 
@@ -33,94 +47,10 @@ namespace WebAPI.Service
         }
         #endregion
 
-        #region UpdateAtlasCaseToGYB
-        public void UpdateAtlasCaseToGYB(IEnumerable<TransferredCaseData> data)
-        {
-            CaseTransferDAL.UpdateAtlasCaseToGYB(data);
-        }
-        #endregion
-
-        #region GetNonAtlasLwfirms
-        public IEnumerable<LawFirm> GetNonAtlasLwfirms()
-        {
-            return CaseTransferDAL.GetNonAtlasLwfirms();
-        }
-        #endregion
-
-        #region GetAtlasLawfirms
-        public IEnumerable<LawFirm> GetAtlasLawfirms()
-        {
-            return CaseTransferDAL.GetAtlasLawfirms();
-        }
-        #endregion
-
-        #region GetLawFirmCaseTransferBatch
-        public IEnumerable<CaseTransferBatch> GetLawFirmCaseTransferBatch(string lawfirmid)
-        {
-            return CaseTransferDAL.GetLawFirmCaseTransferBatch(lawfirmid);
-        }
-        #endregion
-
-        #region GetTransferredCasesByBatch
-        public IEnumerable<CaseModel> GetTransferredCasesByBatch(string lawfirmID, string batchID)
-        {
-            return CaseTransferDAL.GetTransferredCasesByBatch(lawfirmID, batchID);
-        }
-        #endregion
-
-        #region UpdateTranferredBatchStatus
-        public void UpdateTranferredBatchStatus(string LawFirmId, string BatchID, string fileUploadBasePath, string zipFileName, string basePathID)
-        {
-            CaseTransferDAL.UpdateTranferredBatchStatus(LawFirmId, BatchID, fileUploadBasePath, zipFileName, basePathID);
-        }
-        #endregion
-
         #region GetReconcillationReport
         public BillTransferReconcillation GetReconcillationReport(string lawFirmCaseManagerAppName)
         {
             return CaseTransferDAL.GetReconcillationReport(lawFirmCaseManagerAppName);
-        }
-        #endregion
-
-        #region GetWithdrawnCases
-        public IEnumerable<WithdrawnCase> GetWithdrawnCases(string lawFirmID)
-        {
-            return CaseTransferDAL.GetWithdrawnCases(lawFirmID);
-        }
-        #endregion
-
-        #region UpdateWithdrawnCases
-        public void UpdateWithdrawnCases(List<WithdrawnCase> withdrawnCases)
-        {
-            CaseTransferDAL.UpdateWithdrawnCases(withdrawnCases);
-        }
-        #endregion
-
-        #region NotifyAttorneyCaseWithdrawl
-        public void NotifyAttorneyCaseWithdrawl()
-        {
-            CaseTransferDAL.NotifyAttorneyCaseWithdrawl();
-        }
-        #endregion
-
-        #region NotifyGYBCaseTransfer
-        public void NotifyGYBCaseTransfer()
-        {
-            CaseTransferDAL.NotifyGYBCaseTransfer();
-        }
-        #endregion
-
-        #region GetNotAtlasClientsBillData
-        public string GetNotAtlasClientsBillData(string BillNumbers)
-        {
-            return CaseTransferDAL.GetNotAtlasClientsBillData(BillNumbers);
-        }
-        #endregion
-
-        #region GetAllBillDocumentsByCaseID
-        public IEnumerable<FileData> GetAllBillDocumentsByCaseID(string BillNumber)
-        {
-            return CaseTransferDAL.GetAllBillDocumentsByCaseID(BillNumber);
         }
         #endregion
 
@@ -135,13 +65,6 @@ namespace WebAPI.Service
         public string GetParameterValue(string ParameterName, string basePathID)
         {
             return ApplicationSettings.GetParameterValue(ParameterName, basePathID);
-        }
-        #endregion
-
-        #region GetCaseDocumentList
-        public IList<DocumentNode> GetCaseDocumentList(string caseId, string companyId)
-        {
-            return CaseTransferDAL.GetCaseDocumentList(caseId, companyId);
         }
         #endregion
     }
