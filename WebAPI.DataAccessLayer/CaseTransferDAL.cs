@@ -210,7 +210,7 @@ namespace WebAPI.DataAccessLayer
                                               select new FileData()
                                               {
                                                   FilePath = Convert.ToString(dr["PATH"]),
-                                                  NodeType = Convert.ToString(dr["NodeType"]),
+                                                  NodeType = Convert.ToString(dr["Type"]),
                                                   PhysicalBasePath = Convert.ToString(dr["PhysicalBasePath"]),
                                                   BasePathId = Convert.ToInt32(dr.Table.Columns.Contains("BasePathId") ? Convert.ToInt32(dr["BasePathId"]) : basepathid),
                                                   BasePathType = Convert.ToString(dr["BasePathType"]),
@@ -227,7 +227,7 @@ namespace WebAPI.DataAccessLayer
                                               select new FileData()
                                               {
                                                   FilePath = Convert.ToString(dr["PATH"]),
-                                                  NodeType = Convert.ToString(dr["NodeType"]),
+                                                  NodeType = Convert.ToString(dr["Type"]),
                                                   PhysicalBasePath = Convert.ToString(dr["PhysicalBasePath"]),
                                                   BasePathId = Convert.ToInt32(dr.Table.Columns.Contains("BasePathId") ? Convert.ToInt32(dr["BasePathId"]) : basepathid),
                                                   BasePathType = Convert.ToString(dr["BasePathType"]),

@@ -62,9 +62,9 @@ namespace WebAPI.Service
         #endregion
 
         #region GetParameterValue
-        public string GetParameterValue(string ParameterName, string basePathID)
+        public string GetPhysicalBasePath(string ParameterName, string basePathID)
         {
-            return ApplicationSettings.GetParameterValue(ParameterName, basePathID);
+            return ApplicationSettings.GetPhysicalBasePath(ParameterName, basePathID);
         }
         #endregion
     }

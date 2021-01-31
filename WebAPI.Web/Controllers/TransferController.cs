@@ -413,7 +413,7 @@ namespace WebAPI.Web.Controllers
                 }
                 else
                 {
-                    filePath = service.GetParameterValue("PhysicalBasePath", Convert.ToString(basePathID))
+                    filePath = service.GetPhysicalBasePath("PhysicalBasePath", Convert.ToString(basePathID))
                         + inputfilePath;
                 }
 

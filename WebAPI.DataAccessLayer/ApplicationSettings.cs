@@ -49,17 +49,17 @@ namespace WebAPI.DataAccessLayer
             return ParameterValue;
         }
 
-        static public string GetParameterValue(string ParameterName, string basePathID)
+        static public string GetPhysicalBasePath(string ParameterName, string basePathID)
         {
             string ParameterValue = string.Empty;
             sqlCon = new SqlConnection(strsqlCon);
             try
             {
                 sqlCon.Open();
-                sqlDr = new SqlCommand("SELECT " + ParameterName + " FROM tblBasePath where BasePathId=" + basePathID, sqlCon).ExecuteReader();
+                sqlDr = new SqlCommand("SELECT ParameterValue from	dbo.tblApplicationSettings  WHERE ParameterName = 'DocumentUploadLocationPhysical'", sqlCon).ExecuteReader();
                 while (sqlDr.Read())
                 {
-                    ParameterValue = sqlDr[ParameterName].ToString();
+                    ParameterValue = sqlDr["ParameterValue"].ToString();
                 }
                 sqlDr.Close();
 
