@@ -333,6 +333,7 @@ namespace WebAPI.Models
         public string POMStampDate { get; set; }
         public string POMGenerated { get; set; }
         public string POMid { get; set; }
-
+        public string ReferringDoctorName { get; set; }
+        public string ReferringProviderName { get; set; }
     }
 }

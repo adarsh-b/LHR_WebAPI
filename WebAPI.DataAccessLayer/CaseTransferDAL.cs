@@ -111,7 +111,9 @@ namespace WebAPI.DataAccessLayer
                                     DenialReason2 = StringExtensions.GetReasons(Convert.ToString(dr["denial"])).ContainsKey(1) ? StringExtensions.GetReasons(Convert.ToString(dr["denial"]))[1] : string.Empty,
                                     DenialReason3 = StringExtensions.GetReasons(Convert.ToString(dr["denial"])).ContainsKey(2) ? StringExtensions.GetReasons(Convert.ToString(dr["denial"]))[2] : string.Empty,
                                     TreatmentDetails = Convert.ToString(dr["TreatmentDetails"]),
-                                    DiagnosisCodes = Convert.ToString(dr["DiagnosisCodes"])
+                                    DiagnosisCodes = Convert.ToString(dr["DiagnosisCodes"]),
+                                    ReferringDoctorName = Convert.ToString(dr["ReferringDoctorName"]),
+                                    ReferringProviderName = Convert.ToString(dr["ReferringProviderName"])
                                 }).ToList();
             }
             return lstCaseModel;
