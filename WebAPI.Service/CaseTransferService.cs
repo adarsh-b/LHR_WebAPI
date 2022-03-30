@@ -67,5 +67,19 @@ namespace WebAPI.Service
             return ApplicationSettings.GetPhysicalBasePath(ParameterName, basePathID);
         }
         #endregion
+
+        #region GetPendingTransferDocuments
+        public IEnumerable<BillDocumentItem> GetPendingTransferDocuments(int numberOfRows)
+        {
+            return CaseTransferDAL.GetPendingTransferDocuments(numberOfRows);
+        }
+        #endregion
+
+        #region UpdateCaseTransferDocumentStatus
+        public void UpdateCaseTransferDocumentStatus(ProcessedDocumentItem detail)
+        {
+            CaseTransferDAL.UpdateCaseTransferDocumentStatus(detail);
+        }
+        #endregion
     }
 }

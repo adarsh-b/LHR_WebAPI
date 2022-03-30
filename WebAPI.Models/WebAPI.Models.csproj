@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BillDetails.cs" />
+    <Compile Include="BillDocumentItem.cs" />
     <Compile Include="BillTransferReconcillation.cs" />
     <Compile Include="BillTransferSummary.cs" />
     <Compile Include="CaseModel.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="FileData.cs" />
     <Compile Include="FileDownloadModel.cs" />
     <Compile Include="LawFirms.cs" />
+    <Compile Include="ProcessedDocumentItem.cs" />
     <Compile Include="TransferredBatch.cs" />
     <Compile Include="TransferredBillInfo.cs" />
     <Compile Include="TransferredCaseData.cs" />

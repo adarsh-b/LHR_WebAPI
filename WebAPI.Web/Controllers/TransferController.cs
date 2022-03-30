@@ -442,5 +442,67 @@ namespace WebAPI.Web.Controllers
                 throw ex;
             }
         }
+
+        [Authorize]
+        [HttpGet]
+        [ActionName("GetPendingTransferDocuments")]
+        public ILResponse GetPendingTransferDocuments(int numberOfRows)
+        {
+            ILResponse response = new ILResponse();
+
+            try
+            {
+                CaseTransferService service = new CaseTransferService();
+                IEnumerable<BillDocumentItem> lstFileData = service.GetPendingTransferDocuments(numberOfRows);
+
+                response.MessageCode = MessageCodes.REQUEST_SUCCESS;
+                response.MessageText = MSG_SUCCESS;
+                response.MessageType = EnumMessageType.OPERATION_SUCCESS;
+                response.Add(lstFileData);
+                response.HasException = false;
+            }
+            catch (Exception ex)
+            {
+                response.MessageCode = MessageCodes.REQUEST_ERROR;
+                response.HasException = true;
+                response.MessageText = ex.Message;
+                response.MessageType = EnumMessageType.OPERATION_APPLICATION_ERROR;
+                response.Exception = ex.ToString();
+                log.Error("Error while executing GetPendingTransferDocuments : " + ex.Message + ex.StackTrace);
+            }
+
+            return response;
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ActionName("UpdateCaseTransferDocumentStatus")]
+        public ILResponse UpdateCaseTransferDocumentStatus([FromBody]ProcessedDocumentItem detail)
+        {
+            ILResponse response = new ILResponse();
+
+            try
+            {
+                CaseTransferService service = new CaseTransferService();
+                service.UpdateCaseTransferDocumentStatus(detail);
+
+                response.MessageCode = MessageCodes.REQUEST_SUCCESS;
+                response.MessageText = MSG_SUCCESS;
+                response.MessageType = EnumMessageType.OPERATION_SUCCESS;
+                response.Add("Cases withdrawn successfully");
+                response.HasException = false;
+            }
+            catch (Exception ex)
+            {
+                response.MessageCode = MessageCodes.REQUEST_ERROR;
+                response.HasException = true;
+                response.MessageText = ex.Message;
+                response.MessageType = EnumMessageType.OPERATION_APPLICATION_ERROR;
+                response.Exception = ex.ToString();
+                log.Error("Error while executing UpdateCaseTransferDocumentStatus : " + ex.Message + ex.StackTrace);
+            }
+
+            return response;
+        }
     }
 }

@@ -394,5 +394,80 @@ namespace WebAPI.DataAccessLayer
             return recon;
         }
         #endregion
+
+        #region GetPendingTransferDocuments
+        public static IEnumerable<BillDocumentItem> GetPendingTransferDocuments(int numberOfRows)
+        {
+            DataSet ds = new DataSet();
+            List<BillDocumentItem> lstData = new List<BillDocumentItem>();
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (SqlCommand command = new SqlCommand("SP_GetQueuedTransferDocumentsForAtlas", con))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandTimeout = 0;
+
+                    SqlParameter pNumberOfRows = new SqlParameter("@NumberOfRows", numberOfRows);
+                    pNumberOfRows.DbType = DbType.String;
+                    command.Parameters.Add(pNumberOfRows);
+
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = command;
+                    da.Fill(ds);
+
+                    if (ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            lstData.AddRange((from DataRow dr in ds.Tables[0].Rows
+                                              select new BillDocumentItem()
+                                              {
+                                                  ID = Convert.ToInt32(dr["ID"]),
+                                                  CompanyID = Convert.ToString(dr["CompanyID"]),
+                                                  LawFirmID = Convert.ToString(dr["LawFirmID"]),
+                                                  CaseID = Convert.ToString(dr["CaseID"]),
+                                                  BillNumber = Convert.ToString(dr["BillNumber"]),
+                                                  FileName = Convert.ToString(dr["FileName"]),
+                                                  FilePath = Convert.ToString(dr["FilePath"]).Replace('\\', '/'),
+                                                  NodeType = StringExtensions.GetNodeType(Convert.ToString(dr["NodeType"])) == "" ? "UNCATEGORIZED" : StringExtensions.GetNodeType(Convert.ToString(dr["NodeType"])),
+                                                  BasePathId = Convert.ToInt32(dr.Table.Columns.Contains("BasePathId") ? Convert.ToInt32(dr["BasePathId"]) : basepathid),
+                                                  BasePathType = Convert.ToString(dr["BasePathType"])
+                                              }).ToList());
+                        }
+                    }
+                }
+            }
+            return lstData;
+        }
+        #endregion
+
+        #region UpdateCaseTransferDocumentStatus
+        public static void UpdateCaseTransferDocumentStatus(ProcessedDocumentItem detail)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (SqlCommand command = new SqlCommand("SP_UpdateCaseTransferDocumentStatus", con))
+                {
+                    command.CommandTimeout = 0;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter pdocumentSuccessQueueIDList = new SqlParameter("@DocumentSuccessQueueIDList", detail.DocumentIDsSyncedToATLAS);
+                    pdocumentSuccessQueueIDList.SqlDbType = System.Data.SqlDbType.VarChar;
+                    command.Parameters.Add(pdocumentSuccessQueueIDList);
+
+                    SqlParameter pdocumentFailedQueueIDLista = new SqlParameter("@DocumentFailQueueIDList", detail.DocumentIDsNotSyncedToATLAS);
+                    pdocumentFailedQueueIDLista.SqlDbType = System.Data.SqlDbType.VarChar;
+                    command.Parameters.Add(pdocumentFailedQueueIDLista);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        #endregion
     }
 }
