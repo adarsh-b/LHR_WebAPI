@@ -336,5 +336,8 @@ namespace WebAPI.Models
         public string ReferringDoctorName { get; set; }
         public string ReferringProviderName { get; set; }
         public string ChartNo { get; set; }
+        public string PaymentDetails { get; set; }
+        public string DenialDetails { get; set; }
+        public string VerificationDetails { get; set; }
     }
 }
