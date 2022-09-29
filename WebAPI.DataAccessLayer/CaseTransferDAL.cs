@@ -114,7 +114,11 @@ namespace WebAPI.DataAccessLayer
                                     DiagnosisCodes = Convert.ToString(dr["DiagnosisCodes"]),
                                     ReferringDoctorName = Convert.ToString(dr["ReferringDoctorName"]),
                                     ReferringProviderName = Convert.ToString(dr["ReferringProviderName"]),
-                                    ChartNo = Convert.ToString(dr["ChartNo"])
+                                    ChartNo = Convert.ToString(dr["ChartNo"]),
+                                    PaymentDetails = Convert.ToString(dr["PaymentDetails"]),
+                                    DenialDetails = Convert.ToString(dr["DenialDetails"]),
+                                    VerificationDetails = Convert.ToString(dr["VerificationDetails"]),
+                                    DOB = StringExtensions.TryParseNullable(dr["DOB"].ToString())
                                 }).ToList();
             }
             return lstCaseModel;
