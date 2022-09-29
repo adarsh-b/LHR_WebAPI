@@ -117,7 +117,8 @@ namespace WebAPI.DataAccessLayer
                                     ChartNo = Convert.ToString(dr["ChartNo"]),
                                     PaymentDetails = Convert.ToString(dr["PaymentDetails"]),
                                     DenialDetails = Convert.ToString(dr["DenialDetails"]),
-                                    VerificationDetails = Convert.ToString(dr["VerificationDetails"])
+                                    VerificationDetails = Convert.ToString(dr["VerificationDetails"]),
+                                    DOB = StringExtensions.TryParseNullable(dr["DOB"].ToString())
                                 }).ToList();
             }
             return lstCaseModel;

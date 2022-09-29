@@ -339,5 +339,11 @@ namespace WebAPI.Models
         public string PaymentDetails { get; set; }
         public string DenialDetails { get; set; }
         public string VerificationDetails { get; set; }
+
+        public DateTime? DOB
+        {
+            get;
+            set;
+        }
     }
 }
